@@ -1,0 +1,770 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Milton Camelo — Senior Software Engineer</title>
+  <meta name="description" content="Senior Software Engineer focused on backend systems, cloud-native infrastructure, and scalable software architecture." />
+  <meta name="author" content="Milton Camelo" />
+  <meta property="og:title" content="Milton Camelo — Senior Software Engineer" />
+  <meta property="og:description" content="Backend systems, cloud-native infrastructure, and scalable software architecture." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mcameloa.github.io" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <style is:global>
+    :root {
+      --bg: #07080b;
+      --panel: #101116;
+      --panel-2: #151720;
+      --ink: #f6f7fb;
+      --muted: #a4a9b6;
+      --soft: #6f7687;
+      --line: rgba(255,255,255,.11);
+      --accent: #6ee7f9;
+      --accent-2: #8b5cf6;
+      --amber: #fbbf24;
+      --green: #34d399;
+      --max: 1160px;
+      color-scheme: dark;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    p { margin: 0; color: var(--muted); }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+      border-radius: 10px;
+    }
+
+    .shell {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 82% 5%, rgba(110,231,249,.22), transparent 30%),
+        radial-gradient(circle at 0% 78%, rgba(139,92,246,.18), transparent 36%),
+        var(--bg);
+    }
+
+    .shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: radial-gradient(circle at 50% 9%, black, transparent 62%);
+      opacity: .5;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      border-bottom: 1px solid var(--line);
+      background: rgba(7,8,11,.80);
+      backdrop-filter: blur(18px);
+    }
+
+    .topbar-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: -.025em;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 32px rgba(110,231,249,.24);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      padding: 8px 11px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 13px;
+      transition: color .18s ease, border-color .18s ease, background .18s ease;
+    }
+
+    nav a:hover {
+      color: var(--ink);
+      border-color: var(--line);
+      background: rgba(255,255,255,.04);
+    }
+
+    main { position: relative; z-index: 1; }
+    section { padding: 88px 24px; }
+    .wrap { max-width: var(--max); margin: 0 auto; }
+
+    .hero {
+      min-height: calc(100vh - 58px);
+      display: grid;
+      align-items: center;
+      padding-top: 72px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 760;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 99px;
+      background: currentColor;
+      box-shadow: 0 0 20px currentColor;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      letter-spacing: -.055em;
+      line-height: .96;
+      text-wrap: balance;
+    }
+
+    h1 {
+      font-size: clamp(46px, 8vw, 108px);
+      max-width: 990px;
+    }
+
+    h2 {
+      font-size: clamp(34px, 5vw, 68px);
+      max-width: 860px;
+    }
+
+    h3 {
+      font-size: 22px;
+      line-height: 1.08;
+      letter-spacing: -.035em;
+    }
+
+    .intro {
+      max-width: 690px;
+      margin-bottom: 24px;
+      color: #d8dce7;
+      font-size: 18px;
+    }
+
+    .lead {
+      margin-top: 26px;
+      max-width: 780px;
+      color: #d5d9e3;
+      font-size: clamp(19px, 2.3vw, 25px);
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.045);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 14px;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+
+    .btn.primary {
+      background: var(--ink);
+      color: #090a0f;
+      border-color: var(--ink);
+    }
+
+    .btn:hover { transform: translateY(-1px); border-color: rgba(255,255,255,.22); }
+
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 36px;
+      max-width: 820px;
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      color: #dce0ea;
+      padding: 8px 11px;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 34px;
+    }
+
+    .section-head p {
+      max-width: 460px;
+      font-size: 16px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+    .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025));
+      box-shadow: 0 24px 70px rgba(0,0,0,.26);
+      padding: 24px;
+      min-height: 174px;
+    }
+
+    .card p {
+      margin-top: 12px;
+      font-size: 15px;
+    }
+
+    .timeline {
+      border-left: 1px solid var(--line);
+      padding-left: 22px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .role {
+      position: relative;
+      padding: 18px 0 18px 20px;
+    }
+
+    .role::before {
+      content: "";
+      position: absolute;
+      left: -27px;
+      top: 28px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 20px rgba(110,231,249,.58);
+    }
+
+    .role time {
+      color: var(--soft);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .role h3 { margin-top: 7px; }
+    .role p {
+      max-width: 790px;
+      margin-top: 8px;
+      font-size: 15px;
+    }
+
+    .callout {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
+      padding: 24px;
+      font-size: 16px;
+      color: #d5d9e3;
+      max-width: 860px;
+    }
+
+    .callout strong { color: var(--ink); }
+
+    .contact {
+      border-top: 1px solid var(--line);
+      padding: 44px 24px 54px;
+    }
+
+    .contact-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .tiny { color: var(--soft); font-size: 14px; }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero .eyebrow,
+    .hero .intro,
+    .hero h1,
+    .hero .lead,
+    .hero .actions,
+    .hero .stack {
+      opacity: 0;
+      animation: fadeUp .55s cubic-bezier(.2, .7, .2, 1) forwards;
+    }
+
+    .hero .eyebrow { animation-delay: .02s; }
+    .hero .intro { animation-delay: .06s; }
+    .hero h1 { animation-delay: .10s; }
+    .hero .lead { animation-delay: .15s; }
+    .hero .actions { animation-delay: .20s; }
+    .hero .stack { animation-delay: .25s; }
+
+    .motion-ready [data-reveal] {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .72s cubic-bezier(.2, .7, .2, 1), transform .72s cubic-bezier(.2, .7, .2, 1);
+    }
+
+    .motion-ready [data-reveal].is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card,
+    .chip,
+    .btn {
+      will-change: transform;
+    }
+
+    .card {
+      transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(110,231,249,.24);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      box-shadow: 0 28px 76px rgba(0,0,0,.30);
+    }
+
+    .chip {
+      transition: border-color .18s ease, background .18s ease, color .18s ease, transform .18s ease;
+    }
+
+    .chip:hover {
+      border-color: rgba(110,231,249,.34);
+      background: rgba(110,231,249,.08);
+      color: var(--ink);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 980px) {
+      .grid.cols-4, .grid.cols-3 { grid-template-columns: repeat(2, 1fr); }
+      .section-head { align-items: start; flex-direction: column; }
+    }
+
+    @media (max-width: 720px) {
+      .topbar-inner {
+        align-items: center;
+        flex-direction: column;
+        gap: 12px;
+        padding: 14px 18px 12px;
+      }
+      .brand { justify-content: center; }
+      nav {
+        width: 100%;
+        justify-content: center;
+      }
+      section { padding: 64px 18px; }
+      .hero { min-height: auto; padding-top: 56px; }
+      h1 { font-size: clamp(44px, 14vw, 72px); }
+      h2 { font-size: clamp(34px, 10vw, 52px); }
+      .grid.cols-4, .grid.cols-3 { grid-template-columns: 1fr; }
+      .card { min-height: auto; }
+      .contact { padding: 38px 18px 44px; }
+      .contact-inner {
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+      }
+      .contact-links {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 460px) {
+      .brand { white-space: normal; }
+      nav {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 6px;
+      }
+      nav a {
+        padding: 8px 4px;
+        text-align: center;
+        font-size: 12px;
+      }
+      h1 { font-size: 40px; line-height: .98; overflow-wrap: break-word; }
+      h2 { font-size: 38px; line-height: 1; overflow-wrap: break-word; }
+      .lead { font-size: 18px; }
+      .actions { flex-direction: column; }
+      .actions .btn { width: 100%; }
+      .stack { max-width: 100%; }
+      .contact-links {
+        flex-direction: column;
+        align-items: stretch;
+        max-width: 320px;
+        margin: 0 auto;
+      }
+      .contact-links .btn { width: 100%; }
+      .timeline { padding-left: 16px; }
+      .role { padding-left: 14px; }
+      .role::before { left: -21px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .hero .eyebrow,
+      .hero .intro,
+      .hero h1,
+      .hero .lead,
+      .hero .actions,
+      .hero .stack,
+      [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="#top" aria-label="Milton Camelo portfolio home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>Milton Camelo</span>
+        </a>
+        <nav aria-label="Primary navigation">
+          <a href="#focus">Focus</a>
+          <a href="#experience">Experience</a>
+          <a href="#work">Work Areas</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="wrap">
+          <div class="eyebrow"><span class="dot" aria-hidden="true"></span> Senior Software Engineer · Backend & Cloud</div>
+          <p class="intro">Based in Colombia, working with distributed teams and production platforms.</p>
+          <h1 id="hero-title">Backend systems, cloud infrastructure, and scalable architecture.</h1>
+          <p class="lead">Senior Software Engineer with 7+ years of experience building production platforms across sports streaming, delivery, fintech, e-commerce, HR tech, transportation, and public-sector systems.</p>
+          <div class="actions" aria-label="Profile links">
+            <a class="btn primary" href="https://www.linkedin.com/in/mcameloa/">Connect on LinkedIn</a>
+            <a class="btn" href="https://github.com/mcameloa">View GitHub</a>
+          </div>
+          <div class="stack" aria-label="Core technologies">
+            <span class="chip">Go</span>
+            <span class="chip">Ruby on Rails</span>
+            <span class="chip">TypeScript</span>
+            <span class="chip">Kafka</span>
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">Redis</span>
+            <span class="chip">Kubernetes</span>
+            <span class="chip">AWS</span>
+            <span class="chip">GCP</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="focus" aria-labelledby="focus-title" data-reveal>
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow"><span class="dot" aria-hidden="true"></span> Engineering focus</div>
+              <h2 id="focus-title">Production-minded software engineering.</h2>
+            </div>
+            <p>I work close to production: service boundaries, data flows, cloud runtime, delivery workflows, and reliability.</p>
+          </div>
+          <div class="grid cols-4">
+            <article class="card">
+              <h3>Backend Engineering</h3>
+              <p>APIs, service boundaries, data modeling, reliability, and maintainable delivery.</p>
+            </article>
+            <article class="card">
+              <h3>Event-Driven Systems</h3>
+              <p>Kafka-based flows, async processing, consumers, producers, and operational clarity.</p>
+            </article>
+            <article class="card">
+              <h3>Cloud Native</h3>
+              <p>Containerized applications, Kubernetes, CI/CD, AWS, GCP, and deployment readiness.</p>
+            </article>
+            <article class="card">
+              <h3>Product Platforms</h3>
+              <p>Full-stack product work across streaming, delivery, trading, e-commerce, and HR tech.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" aria-labelledby="experience-title" data-reveal>
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow"><span class="dot" aria-hidden="true"></span> Experience highlights</div>
+              <h2 id="experience-title">Platforms, teams, and production systems.</h2>
+            </div>
+            <p>Most of my professional work has been developed in private repositories for production systems.</p>
+          </div>
+          <div class="timeline">
+            <article class="role">
+              <time>2024 — Present</time>
+              <h3>PlayOnSports / Nortal</h3>
+              <p>Senior Full Stack Engineer working on event creation, fundraising, live sports streaming, and scalable platform features.</p>
+            </article>
+            <article class="role">
+              <time>2024 — 2025</time>
+              <h3>Shipt / Pyramid Consulting</h3>
+              <p>Senior Backend Engineer focused on backend migrations and optimization with Go, Rails, Kafka, Redis, Kubernetes, AWS, and GCP.</p>
+            </article>
+            <article class="role">
+              <time>2021 — 2024</time>
+              <h3>Hapi</h3>
+              <p>Senior Software Developer building stock and crypto trading experiences with architecture, NestJS, PostgreSQL, Kafka, Kubernetes, and AWS.</p>
+            </article>
+            <article class="role">
+              <time>2021 — 2023</time>
+              <h3>Mercado Libre</h3>
+              <p>Software Developer SR Analyst in post-purchase systems, microservices, GCP, Go, Node.js, Redis, Docker, Java, and React.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="work" aria-labelledby="work-title" data-reveal>
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow"><span class="dot" aria-hidden="true"></span> Selected work areas</div>
+              <h2 id="work-title">Private-work-safe areas of impact.</h2>
+            </div>
+            <p>Rather than presenting private company code, this portfolio highlights the systems and domains I have worked on.</p>
+          </div>
+          <div class="grid cols-3">
+            <article class="card">
+              <h3>Event-driven backend services</h3>
+              <p>Asynchronous workflows, Kafka consumers, data movement, and service integrations.</p>
+            </article>
+            <article class="card">
+              <h3>Cloud-native product platforms</h3>
+              <p>Containerized services built for deployment, scaling, and operational clarity.</p>
+            </article>
+            <article class="card">
+              <h3>Trading and financial experiences</h3>
+              <p>Product systems for stock and crypto trading flows, architecture, and reliability.</p>
+            </article>
+            <article class="card">
+              <h3>E-commerce and post-purchase</h3>
+              <p>Customer-facing and internal systems supporting fulfillment and post-purchase workflows.</p>
+            </article>
+            <article class="card">
+              <h3>Sports streaming platforms</h3>
+              <p>Features around events, fundraising, and live sports platform capabilities.</p>
+            </article>
+            <article class="card">
+              <h3>Engineering automation</h3>
+              <p>CI/CD, developer workflows, infrastructure automation, and AI-assisted engineering practices.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="principles" aria-labelledby="principles-title" data-reveal>
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow"><span class="dot" aria-hidden="true"></span> How I work</div>
+              <h2 id="principles-title">Clear boundaries, reliable delivery, maintainable systems.</h2>
+            </div>
+            <p>I prefer practical architecture: simple enough to operate, explicit enough to evolve, and robust enough for production.</p>
+          </div>
+          <div class="grid cols-3">
+            <article class="card">
+              <h3>Design for operation</h3>
+              <p>Production concerns matter early: deployment, observability, failure modes, and team ownership.</p>
+            </article>
+            <article class="card">
+              <h3>Keep systems understandable</h3>
+              <p>Readable code, clear service contracts, and architecture that does not require tribal knowledge.</p>
+            </article>
+            <article class="card">
+              <h3>Automate repeated work</h3>
+              <p>CI/CD, scripts, agent workflows, and infrastructure automation to reduce manual friction.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="github-context-title" data-reveal>
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow"><span class="dot" aria-hidden="true"></span> GitHub context</div>
+              <h2 id="github-context-title">Public repositories.</h2>
+            </div>
+          </div>
+          <div class="callout">
+            <strong>My public GitHub includes academic work, small experiments, and utility projects.</strong> Most of my professional work has been built in private company repositories.
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="current-focus-title" data-reveal>
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow"><span class="dot" aria-hidden="true"></span> Current focus</div>
+              <h2 id="current-focus-title">Currently deepening production engineering practice.</h2>
+            </div>
+            <p>Areas I am actively exploring through professional work, personal labs, and engineering workflow experiments.</p>
+          </div>
+          <div class="stack" aria-label="Current focus areas">
+            <span class="chip">Backend architecture</span>
+            <span class="chip">Kafka data flows</span>
+            <span class="chip">Kubernetes</span>
+            <span class="chip">Infrastructure automation</span>
+            <span class="chip">AI-assisted workflows</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="contact" data-reveal>
+      <div class="contact-inner">
+        <div>
+          <strong>Milton Camelo</strong>
+          <p class="tiny">Senior Software Engineer · Colombia / Remote</p>
+        </div>
+        <div class="contact-links" aria-label="Contact links">
+          <a class="btn primary" href="https://www.linkedin.com/in/mcameloa/">LinkedIn</a>
+          <a class="btn" href="https://github.com/mcameloa">GitHub</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script is:inline>
+    (() => {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion || !('IntersectionObserver' in window)) return;
+
+      document.body.classList.add('motion-ready');
+
+      const revealTargets = [...document.querySelectorAll('[data-reveal]')];
+      const revealElement = (element) => element.classList.add('is-visible');
+      const revealVisible = () => {
+        const trigger = window.innerHeight * 0.92;
+        revealTargets.forEach((element) => {
+          if (element.classList.contains('is-visible')) return;
+          if (element.getBoundingClientRect().top < trigger) revealElement(element);
+        });
+      };
+
+      if (!('IntersectionObserver' in window)) {
+        revealVisible();
+        window.addEventListener('scroll', revealVisible, { passive: true });
+        window.addEventListener('resize', revealVisible);
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          revealElement(entry.target);
+          observer.unobserve(entry.target);
+        });
+      }, { rootMargin: '0px 0px -5% 0px', threshold: 0.01 });
+
+      revealTargets.forEach((element) => {
+        observer.observe(element);
+      });
+
+      revealVisible();
+      window.addEventListener('scroll', revealVisible, { passive: true });
+      window.addEventListener('resize', revealVisible);
+    })();
+  </script>
+</body>
+</html>
